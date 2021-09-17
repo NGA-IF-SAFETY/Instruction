@@ -1,0 +1,81 @@
+@mixin styleText($color, $fs, $fw) {
+  color: $color;
+  font-size: $fs;
+  font-weight: $fw;
+}
+
+@mixin styleBgCarousel($name) {
+  background-image: linear-gradient(
+      rgba(23, 22, 23, 0.2),
+      rgba(23, 22, 23, 0.5)
+    ),
+    url(/img/#{$name}.jpg);
+  background-size: cover;
+}
+
+@mixin styleButton($bg-color, $border, $pd-top-bottom, $pd-right-left) {
+  background-color: $bg-color;
+  border: 1px solid $border;
+  padding: $pd-top-bottom $pd-right-left;
+}
+
+@mixin hoverButton($bg-color, $border, $color) {
+  background-color: $bg-color;
+  border: 1px solid $border;
+  color: $color;
+}
+
+@mixin styleHeading($color-title, $fs-title, $fw-bold-title, $color-info) {
+  h3.heading-title {
+    @include styleText($color-title, $fs-title, $fw-bold-title);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2em;
+    span.info {
+      display: block;
+      @include styleText($color-info, 17px, 500);
+      letter-spacing: 4px;
+      text-transform: none;
+      margin-top: 1em;
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        height: 2px;
+        background-color: $color-black-2;
+        width: 70px;
+        right: 47%;
+        bottom: -132%;
+      }
+    }
+    @include mediaQuery("medium") {
+      font-size: 35px;
+    }
+  }
+}
+
+@mixin styleBgFixed($name){
+  background-image: url(/img/#{$name}.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+
+}
+
+@mixin mediaQuery($screen) {
+  // dung voi mang, map la ten mang, bien $screen la ten phan tu trong mang
+  @if map-has-key($map: $breakpoints, $key: $screen) {
+    $value: map-get(
+      $map: $breakpoints,
+      $key: $screen,
+    );
+    @media screen and (max-width: $value) {
+      @content;
+    }
+  } @else {
+    @warn "`#{$screen}` khong ton tai";
+  }
+}
+
+// h1{
+//     background-image: url(..);
+// }

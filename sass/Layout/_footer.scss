@@ -1,0 +1,51 @@
+.footer {
+  background-color: $color-black-4;
+  &-top {
+    padding: 5em 0;
+    h3 {
+      @include styleText($color-primary, $fs-3, $fw-bold-0);
+      letter-spacing: $ls-0;
+      margin-bottom: 1.5em;
+    }
+    p {
+      @include styleText($color-gray-4, 0.9em, $fw-normal);
+      letter-spacing: $ls-0;
+      line-height: 2;
+    }
+    ul {
+      li {
+        margin-bottom: $mg-2;
+        @include styleText($color-gray-4, $fs-0, $fw-normal);
+        i {
+          color: $color-primary;
+          margin-right: $mg-2;
+        }
+        a {
+          @include styleText($color-gray-4, 0.9em, $fw-normal);
+          letter-spacing: $ls-0;
+          transition: all 0.3s;
+          &:hover {
+            color: $color-white-0;
+            transition: all 0.3s;
+          }
+        }
+      }
+      &.address {
+        li {
+          i {
+            color: $color-white-0;
+            width: 2em;
+            height: 2em;
+            border: solid 1px $color-white-0;
+            line-height: 32px;
+            text-align: center;
+          }
+          a{
+            font-size: $fs-0;
+            letter-spacing: 0;
+          }
+        }
+      }
+    }
+  }
+}
